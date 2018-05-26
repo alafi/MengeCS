@@ -50,14 +50,13 @@
     <Compile Include="Vector2.cs" />
     <Compile Include="Vector3.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="MengeCore.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>xcopy /y /d "$(MengeDir)\MengeCore.dll" $(ProjectDir)</PreBuildEvent>
+    <PreBuildEvent>if "$(ConfigurationName)" == "Debug" (
+  xcopy /y /d "$(MengeDir)\MengeCore_d.dll" $(TargetDir)
+) ELSE (
+  xcopy /y /d "$(MengeDir)\MengeCore.dll" $(TargetDir)
+)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

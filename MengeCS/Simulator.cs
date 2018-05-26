@@ -18,9 +18,9 @@ namespace MengeCS
             _agents = new List<Agent>();
         }
 
-        public bool Initialize(String behaveXml, String sceneXml, String model)
+        public bool Initialize(String behaveXml, String sceneXml, String model, String pluginPath = null)
         {
-            if (MengeWrapper.InitSimulator(behaveXml, sceneXml, model, null))
+            if (MengeWrapper.InitSimulator(behaveXml, sceneXml, model, pluginPath))
             {
                 FindTriggers();
                 uint count = MengeWrapper.AgentCount();
